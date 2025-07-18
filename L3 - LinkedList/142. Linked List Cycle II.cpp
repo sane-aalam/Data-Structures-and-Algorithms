@@ -17,21 +17,24 @@ public:
         if(head == nullptr) 
             return nullptr;
 
-        ListNode * slow_pointer = head;
-        ListNode * fast_pointer = head;
+        ListNode * slowRunner = head;
+        ListNode * fastRunner = head;
 
-        while(fast_pointer != nullptr && fast_pointer->next != nullptr){
-            slow_pointer = slow_pointer->next;
-            fast_pointer = fast_pointer->next;
-            fast_pointer = fast_pointer->next;
+        while(fastRunner != nullptr && fastRunner->next != nullptr){
+            slowRunner = slowRunner->next;
+            fastRunner = fastRunner->next;
+            fastRunner = fastRunner->next;
 
-            if(slow_pointer == fast_pointer){
-                slow_pointer = head;
-                while(slow_pointer != fast_pointer){
-                     slow_pointer = slow_pointer->next;
-                     fast_pointer = fast_pointer->next;
+            // when slow and fast pointer,both meet
+            // slow set with head
+            // run both pointer same speed until they both are gonna to meet again 
+            if(slowRunner == fastRunner){
+                slowRunner = head;
+                while(slowRunner != fastRunner){
+                     slowRunner = slowRunner->next;
+                     fastRunner = fastRunner->next;
                 }
-                return slow_pointer;
+                return slowRunner;
             }
         }
     //  It is -1 if there is no cycle. Note that pos is not passed as a parameter.
