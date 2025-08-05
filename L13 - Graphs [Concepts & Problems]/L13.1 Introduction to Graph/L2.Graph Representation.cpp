@@ -1,6 +1,6 @@
 
 #include <bits/stdc++.h>
-using names
+using namespace std;
 
 class Solution {
   public:
